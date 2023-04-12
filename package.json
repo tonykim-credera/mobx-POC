@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "mobx": "^6.9.0",
+    "mobx-react": "^7.6.0",
+    "react-scripts": "^5.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.38.0",
+    "eslint-plugin-mobx": "^0.0.9"
+  }
+}
