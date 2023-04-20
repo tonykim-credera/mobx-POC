@@ -1,22 +1,29 @@
 import { makeAutoObservable } from "mobx";
 
 class Store {
+  ToDoItem = { name: "", description: "" };
   ToDoItemList = [
-    { name: "item1", description: "description1" },
-    { name: "item2", description: "description2" },
+    { name: "item1", description: "description1", id: "1" },
+    { name: "item2", description: "description2", id: "2" },
   ];
-
-  count = 0;
 
   constructor() {
     makeAutoObservable(this);
   }
-  addOne = () => {
-    this.count++;
+
+  removeItem = (itemID) => {
+    // const itemIndexAtID = this.ToDoItemList.findIndex(
+    //   (item) => item.id === itemID
+    // );
+    // if (itemIndexAtID > -1) {
+    //   this.ToDoItemList.splice(itemIndexAtID, 1);
+    // }
+    this.ToDoItemList.splice(itemID - 1, itemID);
   };
 
-  subtractOne = () => {
-    this.count--;
+  addItem = () => {
+    const target = this.e.target;
+    this.ToDoItemList.push(target);
   };
 }
 
