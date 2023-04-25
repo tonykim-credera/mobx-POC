@@ -1,11 +1,19 @@
 import { makeAutoObservable } from "mobx";
+import RestaurantsData from "../data/restaurantsData";
 
 class Store {
-  ToDoItem = { name: "", description: "" };
-  ToDoItemList = [
-    { name: "item1", description: "description1", id: "1" },
-    { name: "item2", description: "description2", id: "2" },
-  ];
+  Restaurant = {
+    name: "",
+    imgsrc: "",
+    rating: "",
+    address: { location: "" },
+    price: "",
+    type: { categories: [{ title: "" }] },
+    yelp: "",
+  };
+
+  Restaurants = [...RestaurantsData];
+  LikedRestaurants = [];
 
   constructor() {
     makeAutoObservable(this);

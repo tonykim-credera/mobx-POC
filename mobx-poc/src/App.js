@@ -1,8 +1,5 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { observer } from "mobx-react-lite";
-import store from "./stores/store";
-import TodoItem from "./components/TodoItem";
 import Homepage from "./pages/Homepage";
 import EditPage from "./pages/EditPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
