@@ -1,5 +1,6 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
+import store from "../stores/store";
 
 import {
   Card,
@@ -18,8 +19,10 @@ import {
   CurrencyDollarIcon,
 } from "@heroicons/react/24/solid";
 import "../App.css";
+import { useState } from "react";
 
 const ReactCard = observer((props) => {
+  const [liked, setLike] = useState(props.liked);
   return (
     <Card className={`w-full shadow-lg ${props.className}`}>
       <CardHeader floated={false} color="blue-gray">
@@ -29,25 +32,17 @@ const ReactCard = observer((props) => {
           alt={props.name}
         />
         <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60 " />
-        {props.liked ? (
-          <IconButton
-            size="sm"
-            color="red"
-            variant="text"
-            className="!absolute top-4 right-4 rounded-full"
-          >
-            <HeartIcon className="h-6 w-6" />
-          </IconButton>
-        ) : (
-          <IconButton
-            size="sm"
-            color="white"
-            variant="text"
-            className="!absolute top-4 right-4 rounded-full"
-          >
-            <HeartIcon className="h-6 w-6" />
-          </IconButton>
-        )}
+        <IconButton
+          size="sm"
+          color={liked ? "red" : "white"}
+          variant="text"
+          className="!absolute top-4 right-4 rounded-full"
+          onClick={() =>
+            store.handleHeartClick(store.Restaurants, props.id, liked, setLike)
+          }
+        >
+          <HeartIcon className="h-6 w-6" />
+        </IconButton>
       </CardHeader>
       <CardBody>
         <div className="mb-3 flex items-center justify-between">

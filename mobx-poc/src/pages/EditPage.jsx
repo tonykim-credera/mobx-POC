@@ -61,7 +61,7 @@ const EditPage = observer(() => {
               <EditItem className="w-1/2" name={item.name} />
               <Button
                 className="w-1/4 bg-red-400"
-                onClick={(e) => store.removeItem(item.indexOf(0))}
+                onClick={() => store.removeItem(store.Restaurants, item.id)}
               >
                 delete
               </Button>

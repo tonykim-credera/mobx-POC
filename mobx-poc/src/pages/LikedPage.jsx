@@ -6,7 +6,7 @@ import ReactCard from "../components/Card";
 import { Button } from "@material-tailwind/react";
 import "../App.css";
 
-const Homepage = observer(() => {
+const LikedPage = observer(() => {
   return (
     <>
       <div className="m-auto mt-8 w-3/4 p-6">
@@ -15,12 +15,12 @@ const Homepage = observer(() => {
         </h1>
         <ul className="text-sm mb-5 flex justify-between mt-6">
           <p className="text-base ">
-            Showing: {store.Restaurants.length} Restaurants
+            Showing: {store.LikedRestaurants.length} Restaurants
           </p>
           <div>
-            <Link className="text-base " to="/LikedPage">
+            <Link className="text-base " to="/">
               <Button className="px-10 py-3 bg-blue-700 mr-6">
-                {store.LikedRestaurants.length} Liked Restaurants
+                View All {store.Restaurants.length} Restaurants
               </Button>
             </Link>
             <Link className="text-base " to="/EditPage">
@@ -31,7 +31,7 @@ const Homepage = observer(() => {
           </div>
         </ul>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
-          {store.Restaurants.map((item) => {
+          {store.LikedRestaurants.map((item) => {
             return (
               <ReactCard
                 name={item.name}
@@ -52,4 +52,4 @@ const Homepage = observer(() => {
   );
 });
 
-export default Homepage;
+export default LikedPage;

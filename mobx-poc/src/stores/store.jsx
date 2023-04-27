@@ -19,19 +19,26 @@ class Store {
     makeAutoObservable(this);
   }
 
-  removeItem = (itemID) => {
-    // const itemIndexAtID = this.ToDoItemList.findIndex(
-    //   (item) => item.id === itemID
-    // );
-    // if (itemIndexAtID > -1) {
-    //   this.ToDoItemList.splice(itemIndexAtID, 1);
-    // }
-    this.ToDoItemList.splice(itemID - 1, itemID);
+  removeItem = (Restaurants, itemID) => {
+    const itemIndex = Restaurants.findIndex((obj) => obj.id === itemID);
+    Restaurants.splice(itemIndex, 1);
   };
 
   addItem = () => {
     const target = this.e.target;
-    this.ToDoItemList.push(target);
+    store.Restaurants.push(target);
+  };
+
+  handleHeartClick = (Restaurants, itemID, liked, setLike) => {
+    const itemIndex = Restaurants.findIndex((obj) => obj.id === itemID);
+    Restaurants[itemIndex].liked = !Restaurants[itemIndex].liked;
+    if (Restaurants[itemIndex].liked === true) {
+      store.LikedRestaurants.push(Restaurants[itemIndex]);
+    } else {
+      this.removeItem(store.LikedRestaurants, itemID);
+    }
+    console.log(itemIndex);
+    setLike(!liked);
   };
 }
 
